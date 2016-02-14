@@ -11,13 +11,6 @@ D -> Move towards the right
 
 Arrow keys/ Mouse -> Move camera
 
-E -> Interact with snowball piles or 
-talk to other animals
-
-Q/ Left mouse click -> Throw snow ball ( if you have any)
-Holding down F -> Show infomation about the scene, controls, objectives and things 
-you can do.
-
 1 -> Enable culling
 
 2 ->Disable culling

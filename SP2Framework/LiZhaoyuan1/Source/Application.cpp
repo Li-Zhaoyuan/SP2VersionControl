@@ -11,8 +11,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-#include "SP2Framework.h"
+#include "Scene1.h"
+#include "Scene2.h"
+#include "Scene3.h"
+#include "Scene4.h"
+#include "SceneLight.h"
+#include "SceneLight2.h"
+#include "SceneTexture.h"
+#include "SceneSkybox.h"
+#include "SceneModel.h"
+#include "SceneText.h"
+#include "Assignment2.h"
+#include "Assignment3.h"
 GLFWwindow* m_window;
 GLFWmonitor* primary;
 const unsigned char FPS = 60; // FPS of this game
@@ -72,7 +82,7 @@ void Application::Init()
 	const GLFWvidmode* mode = glfwGetVideoMode(primary);
 	//Create a window and create its OpenGL context
 	m_window = glfwCreateWindow(mode->width, mode->height, "Computer Graphics", NULL, NULL);
-	//m_window = glfwCreateWindow(1280, 720, "Computer Graphics", NULL, NULL);
+	
 	/*glfwSetCursorPos(m_window, 800 / 2, 600 / 2);*/
 	glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 	glfwSetWindowSizeCallback(m_window, resize_callback);
@@ -106,7 +116,7 @@ void Application::Init()
 void Application::Run()
 {
 	//Main Loop
-	Scene *scene = new SP2Framework();
+	Scene *scene = new Assignment3();
 	scene->Init();
 
 	m_timer.startTimer();    // Start timer to calculate how long it takes to render this frame

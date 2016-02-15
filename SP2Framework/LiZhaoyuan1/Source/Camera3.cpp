@@ -30,7 +30,7 @@ void Camera3::Init(const Vector3& pos, const Vector3& target, const Vector3& up)
 void Camera3::Update(double dt, float bounds)
 {
 	POINT mousecursor;
-	static const float CAMERA_SPEED = 15.f;
+	static const float CAMERA_SPEED = 25.f;
 	
 	GetCursorPos(&mousecursor);
 	if ((Application::IsKeyPressed(VK_LEFT)))
@@ -47,7 +47,7 @@ void Camera3::Update(double dt, float bounds)
 	}
 	if (mousecursor.x<800 / 2)
 	{
-		float yaw = (float)(CAMERA_SPEED * 0.2 * dt*(800 / 2 - mousecursor.x));
+		float yaw = (float)(CAMERA_SPEED * 0.5 * dt*(800/2-mousecursor.x));
 		rotateChar += yaw;
 		Vector3 view = (target - position).Normalized();
 		Vector3 right = view.Cross(up);
@@ -93,7 +93,7 @@ void Camera3::Update(double dt, float bounds)
 	}
 	if (mousecursor.x>800 / 2)
 	{
-		float yaw = (float)(-CAMERA_SPEED* 0.2 * dt*(mousecursor.x - 800 / 2));
+		float yaw = (float)(-CAMERA_SPEED* 0.5 * dt*(mousecursor.x - 800 / 2));
 		rotateChar += yaw;
 		Vector3 view = (target - position).Normalized();
 		Vector3 right = view.Cross(up);
@@ -145,7 +145,7 @@ void Camera3::Update(double dt, float bounds)
 	if (mousecursor.y<600 / 2)
 	{
 		
-		float pitch = (float)(CAMERA_SPEED * 0.2* dt*(600 / 2 - mousecursor.y));
+			float pitch = (float)(CAMERA_SPEED * 0.5* dt*(600 / 2 - mousecursor.y));
 			Vector3 view = (target - position).Normalized();
 			Vector3 right = view.Cross(up);
 			right.y = 0;
@@ -197,7 +197,7 @@ void Camera3::Update(double dt, float bounds)
 	{
 		if (target.y > -0.8)
 		{
-			float pitch = (float)(-CAMERA_SPEED * 0.2 * 2 * dt*(mousecursor.y - 600 / 2));
+			float pitch = (float)(-CAMERA_SPEED * 0.5 * 2 * dt*(mousecursor.y - 600 / 2));
 			Vector3 view = (target - position).Normalized();
 			Vector3 right = view.Cross(up);
 			right.y = 0;
@@ -240,12 +240,11 @@ void Camera3::Reset()
 	position = defaultPosition;
 	target = defaultTarget;
 	up = defaultUp;
-	rotateChar = 0;
 }
 
 void Camera3::UpdateCollision(float bounds, double dt)
 {
-	static const float CAMERA_SPEED = 15.f;
+	static const float CAMERA_SPEED = 25.f;
 	if (Application::IsKeyPressed('A'))
 	{
 		Vector3 view = (target - position).Normalized();
